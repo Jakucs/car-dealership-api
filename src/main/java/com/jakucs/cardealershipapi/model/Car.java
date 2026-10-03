@@ -11,7 +11,6 @@ public class Car {
     private int id;
 
 
-    @NotBlank
     @Column(unique = true, nullable = false, length = 17)
     private String vin;
 

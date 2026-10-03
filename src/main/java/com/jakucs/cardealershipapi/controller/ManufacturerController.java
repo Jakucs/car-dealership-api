@@ -1,0 +1,24 @@
+package com.jakucs.cardealershipapi.controller;
+
+import com.jakucs.cardealershipapi.model.Manufacturer;
+import com.jakucs.cardealershipapi.repository.ManufacturerRepository;
+import com.jakucs.cardealershipapi.service.ManufacturerService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/manufacturers")
+public class ManufacturerController {
+
+    private final ManufacturerService manufacturerService;
+
+    public ManufacturerController(ManufacturerService manufacturerService){
+        this.manufacturerService = manufacturerService;
+    }
+
+    @GetMapping
+    public Manufacturer getAll(){
+
+    }
+}
