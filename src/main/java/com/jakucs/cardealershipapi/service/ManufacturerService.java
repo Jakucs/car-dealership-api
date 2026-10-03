@@ -18,23 +18,32 @@ public class ManufacturerService {
             this.manufacturerRepository = manufacturerRepository;
         }
 
+        public Manufacturer newManufacturer(Manufacturer manufacturer){
+            return manufacturerRepository.save(manufacturer);
+        }
+
         public List<Manufacturer> getAll(){
             return manufacturerRepository.findAll();
         }
 
-        public Optional<Manufacturer> getManufacturerById(Integer id){
-            return manufacturerRepository.findById(id);
+        public Manufacturer getManufacturerById(Integer id){
+            return  manufacturerRepository.findById(id)
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Manufacturer not found"));
         }
 
         public Manufacturer modifyManufacturerById(Integer id, Manufacturer manufacturer){
             manufacturerRepository.findById(id)
-                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Manufacturer ot found"));
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Manufacturer not found"));
 
             manufacturer.setId(id);
             return manufacturerRepository.save(manufacturer);
         }
 
-        public void deleteManufactureById(Integer id){
+        public void deleteManufacturerById(Integer id){
+            if(!manufacturerRepository.existsById(id)){
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Manufacturer not found");
+
+            }
             manufacturerRepository.deleteById(id);
         }
 }
