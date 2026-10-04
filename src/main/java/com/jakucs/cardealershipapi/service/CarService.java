@@ -28,8 +28,9 @@ public class CarService {
         return carRepository.findAll();
     }
 
-    public Optional<Car> getCarById(Integer id){
-        return carRepository.findById(id);
+    public Car getCarById(Integer id){
+        return carRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Car not found"));
     }
 
     public Car addCar(CarRequest request){
