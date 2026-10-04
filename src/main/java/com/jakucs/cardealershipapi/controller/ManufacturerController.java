@@ -29,7 +29,7 @@ public class ManufacturerController {
 
     @PostMapping
     public Manufacturer addManufacturer(@RequestBody Manufacturer manufacturer){
-        return manufacturerService.newManufacturer(manufacturer);
+        return manufacturerService.addManufacturer(manufacturer);
     }
 
     @PutMapping("/{id}")
@@ -37,7 +37,7 @@ public class ManufacturerController {
         return manufacturerService.modifyManufacturerById(id, manufacturer);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public void deleteManufacturer(@PathVariable Integer id){
         manufacturerService.deleteManufacturerById(id);
     }

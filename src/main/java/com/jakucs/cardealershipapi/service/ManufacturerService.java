@@ -18,7 +18,7 @@ public class ManufacturerService {
             this.manufacturerRepository = manufacturerRepository;
         }
 
-        public Manufacturer newManufacturer(Manufacturer manufacturer){
+        public Manufacturer addManufacturer(Manufacturer manufacturer){
             return manufacturerRepository.save(manufacturer);
         }
 
