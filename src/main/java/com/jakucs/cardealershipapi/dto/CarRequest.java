@@ -9,8 +9,6 @@ import jakarta.validation.constraints.NotBlank;
 
 public class CarRequest {
 
-    private int id;
-
     private String vin;
 
 
