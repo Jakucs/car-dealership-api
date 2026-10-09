@@ -34,6 +34,10 @@ public class CarService {
     }
 
     public Car addCar(CarRequest request){
+        return carRepository.save(buildCar(request));
+    }
+
+    private Car buildCar(CarRequest request){
         Manufacturer manufacturer = manufacturerService.getManufacturerById(request.getManufacturerId());
 
         Car car = new Car();
@@ -53,14 +57,14 @@ public class CarService {
         car.setSeats(request.getSeats());
         car.setStatus(request.getStatus());
 
-        return carRepository.save(car);
+        return car;
     }
 
     public Car modifyCarById(Integer id, CarRequest request){
         if(!carRepository.existsById(id)){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Car not found");
         }
-        Car car = addCar(request);
+        Car car = buildCar(request);
         car.setId(id);
         return carRepository.save(car);
     }

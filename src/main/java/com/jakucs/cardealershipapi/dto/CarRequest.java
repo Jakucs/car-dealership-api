@@ -5,30 +5,45 @@ import com.jakucs.cardealershipapi.model.Manufacturer;
 import com.jakucs.cardealershipapi.model.Status;
 import com.jakucs.cardealershipapi.model.TransmissionType;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.*;
 
 public class CarRequest {
 
+    @NotBlank
+    @Size(min=17, max=17)
     private String vin;
 
-
+    @NotNull
     private Integer manufacturerId;
     @NotBlank
     private String type;
 
     private String licensePlate;
 
+    @Min(1900)
+    @Max(2100)
     private int year;
     @NotBlank
     private String color;
+    @PositiveOrZero
     private int mileage;
+    @Positive
     private int price;
+    @NotNull
     private FuelType fuelType;
+    @NotNull
     private TransmissionType transmissionType;
+    @Positive
     private int enginePowerHp;
+    @PositiveOrZero
     private int engineDisplacementCc;
+    @Min(2)
+    @Max(7)
     private int doors;
+    @Min(1)
+    @Max(9)
     private int seats;
+    @NotNull
     private Status status;
 
 

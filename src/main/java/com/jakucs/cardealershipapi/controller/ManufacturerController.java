@@ -3,6 +3,7 @@ package com.jakucs.cardealershipapi.controller;
 import com.jakucs.cardealershipapi.model.Manufacturer;
 import com.jakucs.cardealershipapi.repository.ManufacturerRepository;
 import com.jakucs.cardealershipapi.service.ManufacturerService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,12 +29,12 @@ public class ManufacturerController {
     }
 
     @PostMapping
-    public Manufacturer addManufacturer(@RequestBody Manufacturer manufacturer){
+    public Manufacturer addManufacturer(@Valid @RequestBody Manufacturer manufacturer){
         return manufacturerService.addManufacturer(manufacturer);
     }
 
     @PutMapping("/{id}")
-    public Manufacturer modifyManufacturer(@PathVariable Integer id, @RequestBody Manufacturer manufacturer){
+    public Manufacturer modifyManufacturer(@PathVariable Integer id, @Valid @RequestBody Manufacturer manufacturer){
         return manufacturerService.modifyManufacturerById(id, manufacturer);
     }
 

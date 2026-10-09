@@ -3,6 +3,7 @@ package com.jakucs.cardealershipapi.controller;
 import com.jakucs.cardealershipapi.dto.CarRequest;
 import com.jakucs.cardealershipapi.model.Car;
 import com.jakucs.cardealershipapi.service.CarService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class CarController {
     }
 
     @PostMapping
-    public Car addCar(@RequestBody CarRequest request){
+    public Car addCar(@Valid @RequestBody CarRequest request){
         return carService.addCar(request);
     }
 
@@ -28,17 +29,17 @@ public class CarController {
         return carService.getCars();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public Car getCarById(@PathVariable Integer id){
         return carService.getCarById(id);
     }
 
-    @PutMapping("{id}")
-    public Car modifyCarById(@PathVariable Integer id, @RequestBody CarRequest request){
+    @PutMapping("/{id}")
+    public Car modifyCarById(@PathVariable Integer id, @Valid  @RequestBody CarRequest request){
         return carService.modifyCarById(id, request);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public void deleteCarById(@PathVariable Integer id){
         carService.deleteCarById(id);
     }
