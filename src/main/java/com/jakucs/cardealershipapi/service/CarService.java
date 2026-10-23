@@ -2,6 +2,7 @@ package com.jakucs.cardealershipapi.service;
 
 import com.jakucs.cardealershipapi.dto.CarRequest;
 import com.jakucs.cardealershipapi.model.Car;
+import com.jakucs.cardealershipapi.model.FuelType;
 import com.jakucs.cardealershipapi.model.Manufacturer;
 import com.jakucs.cardealershipapi.repository.CarRepository;
 import com.jakucs.cardealershipapi.repository.ManufacturerRepository;
@@ -24,8 +25,8 @@ public class CarService {
         this.manufacturerRepository = manufacturerRepository;
     }
 
-    public List<Car> getCars(){
-        return carRepository.findAll();
+    public List<Car> getCars(FuelType fuelType, Integer minPrice, Integer maxYear) {
+        return carRepository.search(fuelType, minPrice, maxYear);
     }
 
     public Car getCarById(Integer id){

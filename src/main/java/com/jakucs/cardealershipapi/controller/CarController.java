@@ -2,6 +2,9 @@ package com.jakucs.cardealershipapi.controller;
 
 import com.jakucs.cardealershipapi.dto.CarRequest;
 import com.jakucs.cardealershipapi.model.Car;
+import com.jakucs.cardealershipapi.model.FuelType;
+import com.jakucs.cardealershipapi.model.Status;
+import com.jakucs.cardealershipapi.model.TransmissionType;
 import com.jakucs.cardealershipapi.service.CarService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
@@ -25,8 +28,12 @@ public class CarController {
     }
 
     @GetMapping
-    public List<Car> getCars(){
-        return carService.getCars();
+    public List<Car> getCars(
+            @RequestParam(required = false) FuelType fuelType,
+            @RequestParam(required = false) Integer minPrice,
+            @RequestParam(required = false) Integer maxYear
+            ){
+        return carService.getCars(fuelType);
     }
 
     @GetMapping("/{id}")
