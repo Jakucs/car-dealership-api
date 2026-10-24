@@ -33,7 +33,7 @@ public class CarController {
             @RequestParam(required = false) Integer minPrice,
             @RequestParam(required = false) Integer maxYear
             ){
-        return carService.getCars(fuelType);
+        return carService.getCars(fuelType, minPrice, maxYear);
     }
 
     @GetMapping("/{id}")

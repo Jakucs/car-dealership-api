@@ -36,7 +36,7 @@ public class Car {
     private int doors;
     private int seats;
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private Status status = Status.AVAILABLE;
 
     public int getId() {
         return id;
